@@ -79,3 +79,11 @@ function(req, res, next) {
 app.use(中间件函数)
 
 连续定义和使用`多个中间件`，请求到达后会按照`先后顺序执行`
+
+
+局部生效的中间件
+不使用 `app.use`
+
+连续使用多个中间件,两种写法等效
+app.get('/home', mv1, mv2, (req, res) => {})
+app.get('/home', [mv1, mv2], (req, res) => {})
