@@ -16,3 +16,6 @@ Express本质是第三方模块，与内置模块http类似，专门用来创建
 Web网站服务器：对外提供web网页资源
 API接口服务器：对外提供API接口服务
 Express可以创建 Web网站服务器 或 API接口服务器。
+
+app.get(url, (req, res) => {})
+app.post(url, (req, res) => {})
