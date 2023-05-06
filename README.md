@@ -38,3 +38,24 @@ app.use(url1, express.static(url2))  连续写，便能托管多个静态资源
   1. url1是用户端访问的路径，默认是 ./ 或 ./index.html
   1. url2是从根目录开始的
   2. 是express.static
+
+## 路由
+路由是映射关系
+Express中，路由是 `客户端的请求` 与 `服务器处理函数` 之间的映射关系
+Express的路由分为3部分， `请求的类型` `请求的URl地址` `处理函数`
+
+基本使用方式：
+app.METHOD(PATH, HANDLE);
+特点 
+  1. `按照先后顺序匹配`
+  2. `请求类型` 和 `请求URL地址` 都匹配成功后，才会调用对应的处理函数
+
+模块化使用方式：
+  1. 创建路由模块对应的 .js 文件
+  2. 调用 `express.Router()` 函数创建路由对象
+  3. 向路由对象上挂载具体的路由
+  4. 使用 `module.exports` 向外共享路由对象
+  5. 使用 `app.use()` 注册路由模块
+
+app.use([url,] router);
+为router添加统一的url前缀
