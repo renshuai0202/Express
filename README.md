@@ -30,7 +30,11 @@ app.get(url, (req, res) => {
 
 托管静态资源
 静态资源是指非动态内容，无需服务器处理，服务器直接提供给客户端，通常是字体、图片、html、css、js文件
-app.use(express.static(url))  
+app.use(url1, express.static(url2))  
+app.use(url1, express.static(url2))  连续写，便能托管多个静态资源
+在同一个用户端路径下托管多个静态资源，只会向外提供第一个资源，如果第一个资源找不到才会顺延提供第二个静态资源
+
 注意：
-  1. url是从根目录开始的
+  1. url1是用户端访问的路径，默认是 ./ 或 ./index.html
+  1. url2是从根目录开始的
   2. 是express.static
