@@ -19,3 +19,10 @@ Express可以创建 Web网站服务器 或 API接口服务器。
 
 app.get(url, (req, res) => {})
 app.post(url, (req, res) => {})
+
+获取 `查询参数`
+app.get(url, (req, res) => {
+  
+  如果客户端URl带有查询参数?name='zhangsan'&id=123
+  req.query 获取URl的查询参数，默认是一个空对象 此处是{ name: 'zhangsan', id: 123 }
+})

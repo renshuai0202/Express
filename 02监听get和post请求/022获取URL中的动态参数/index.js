@@ -2,15 +2,18 @@ const express = require('express');
 
 const app = express();
 
-// 监听get请求，向客户端响应具体内容
-app.get('/about', (req, res) => {
+app.get('/about/:id', (req, res) => {
   const url = req.url;
   const method = req.method;
 
-  res.send(`The request URL is ${url} and method is ${method}`);
+  // 客户端URl带有 `动态参数` /about/:id
+  const params = req.params;
+  // req.param是一个对象 { id:  }
+  console.log(params);
+
+  res.send(params);
 })
 
-// 监听post请求，向客户端响应具体内容
 app.post('/api/postMessage', (req, res) => {
   res.send('请求成功');
 })

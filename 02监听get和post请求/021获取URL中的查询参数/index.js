@@ -2,15 +2,18 @@ const express = require('express');
 
 const app = express();
 
-// 监听get请求，向客户端响应具体内容
 app.get('/about', (req, res) => {
   const url = req.url;
   const method = req.method;
 
+  // 客户端URl带有 `查询参数` ?name='zhangsan'&id=123
+  const query = req.query;
+  // req.query是一个对象 { name: 'zhangsan', id: 123 }
+  console.log(query);
+
   res.send(`The request URL is ${url} and method is ${method}`);
 })
 
-// 监听post请求，向客户端响应具体内容
 app.post('/api/postMessage', (req, res) => {
   res.send('请求成功');
 })
