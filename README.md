@@ -87,3 +87,27 @@ app.use(中间件函数)
 连续使用多个中间件,两种写法等效
 app.get('/home', mv1, mv2, (req, res) => {})
 app.get('/home', [mv1, mv2], (req, res) => {})
+
+使用中间件的注意事项
+  1. 在`调用路由之前` 注册中间件
+  2. 一个请求可以`连续调用多个中间件`
+  3. 不要忘记`调用next()`
+  4. `next()之后`不要再写业务代码
+  5. 连续调用多个中间键时，`共享req和res`
+
+  中间件分类：
+    1. 应用级中间件
+    2. 路由级中间件
+    3. 错误级中间件
+    4. Express内置中间件
+    5. 第三方中间件
+
+应用级中间件：
+  通过`app.use()` `app.get()` `app.post()` 绑定到app实例上的中间件
+路由级中间件
+  绑定到路由实例上的中间件 `const router = express.Router(); router.use();`
+错误级别中间件：
+  捕获整个项目的异常，防止项目崩溃 `function(err, req, res, next)` 一定要写4个参数
+  `app.use((err, req, res, next) => {})`
+  一定要在所有路由后注册
+  
