@@ -104,10 +104,17 @@ app.get('/home', [mv1, mv2], (req, res) => {})
 
 应用级中间件：
   通过`app.use()` `app.get()` `app.post()` 绑定到app实例上的中间件
-路由级中间件
+路由级中间件：
   绑定到路由实例上的中间件 `const router = express.Router(); router.use();`
 错误级别中间件：
   捕获整个项目的异常，防止项目崩溃 `function(err, req, res, next)` 一定要写4个参数
   `app.use((err, req, res, next) => {})`
   一定要在所有路由后注册
-  
+Express内置中间件：
+  3个常用的Express中间件
+  1. 静态托管资源
+    app.use(express.static('./05中间件/053中间件的分类/Express内置中间件/public'));
+  2. 解析JSON格式请求体数据
+    app.use(express.json());
+  3. 解析URL-encoded格式请求体数据
+    app.use(express.urlencoded({ extended: false }))
