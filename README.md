@@ -26,3 +26,11 @@ app.get(url, (req, res) => {
   如果客户端URl带有查询参数?name='zhangsan'&id=123
   req.query 获取URl的查询参数，默认是一个空对象 此处是{ name: 'zhangsan', id: 123 }
 })
+
+
+托管静态资源
+静态资源是指非动态内容，无需服务器处理，服务器直接提供给客户端，通常是字体、图片、html、css、js文件
+app.use(express.static(url))  
+注意：
+  1. url是从根目录开始的
+  2. 是express.static
